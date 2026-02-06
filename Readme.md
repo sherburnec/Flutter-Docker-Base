@@ -15,7 +15,7 @@ Before you begin, ensure you have the following installed on your machine:
 ### 1. Clone the Repository
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/sherburnec/Flutter-Docker-Base
 ```
 
 ### 2. Build the Docker Image
