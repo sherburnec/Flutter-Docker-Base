@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  flutter-dev:
+    # Build the image from the Dockerfile in the current directory
+    build: .
+    
+    # Give the container a friendly name
+    container_name: app-dev
+    
+    # Mount your project code into the container
+    # This creates a two-way connection: changes you make on your host computer
+    # are immediately visible inside the container, and vice versa
+    volumes:
+      - .:/workspace
+      # Persist Flutter pub cache to speed up dependency downloads
+      - flutter-pub-cache:/root/.pub-cache
+    
+    # Keep the container running
+    # The stdin_open and tty options make it possible to interact with the container
+    stdin_open: true
+    tty: true
+    
+    # Optional: expose ports if you want to run web builds
+    # Flutter web apps typically run on port 8080
+    ports:
+      - "8080:8080"
+
+# Define named volumes that persist between container restarts
+# This means your downloaded Flutter packages won't need to be re-downloaded
+volumes:
+  flutter-pub-cache:
